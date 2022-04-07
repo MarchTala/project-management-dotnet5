@@ -1,0 +1,54 @@
+:root { 
+    --color-red: #DB4437;
+    --color-pink: #FD636B;
+    --color-orange: #F37021;
+    --color-yellow: #F4B400;
+    --color-blue: #408BC9;
+    --color-green: #0DB14B;
+    --color-dark: #181717;
+
+    --line-px-regular: 5px solid;
+    --line-px-hover: 15px solid;
+
+    --line-border-red: var(--line-px-regular) var(--color-red);
+    --line-border-pink: var(--line-px-regular) var(--color-pink);
+    --line-border-orange: var(--line-px-regular) var(--color-orange);
+    --line-border-yellow: var(--line-px-regular) var(--color-yellow);
+    --line-border-blue: var(--line-px-regular) var(--color-blue);
+    --line-border-green: var(--line-px-regular) var(--color-green);
+
+    --line-border-red-hover: var(--line-px-hover) var(--color-red);
+    --line-border-pink-hover: var(--line-px-hover) var(--color-pink);
+    --line-border-orange-hover: var(--line-px-hover) var(--color-orange);
+    --line-border-yellow-hover: var(--line-px-hover) var(--color-yellow);
+    --line-border-blue-hover: var(--line-px-hover) var(--color-blue);
+    --line-border-green-hover: var(--line-px-hover) var(--color-green);
+}
+
+.board-bg-red { background-color: var(--color-red); }
+.board-left-line-red { border-left: var(--line-border-red); }
+
+.board-bg-pink { background-color: var(--color-pink); }
+.board-left-line-pink { border-left: var(--line-border-pink); }
+
+.board-bg-orange { background-color: var(--color-orange); }
+.board-left-line-orange { border-left: var(--line-border-orange); }
+
+.board-bg-yellow { background-color: var(--color-yellow); }
+.board-left-line-yellow { border-left: var(--line-border-yellow); }
+
+.board-bg-blue { background-color: var(--color-blue); }
+.board-left-line-blue { border-left: var(--line-border-blue); }
+
+.board-bg-green { background-color: var(--color-green); }
+.board-left-line-green { border-left: var(--line-border-green); }
+
+.ul-list li{ transition: .1s ease-out; }
+
+.ul-list .board-left-line-red:hover { border-left: var(--line-border-red-hover); }
+.ul-list .board-left-line-pink:hover { border-left: var(--line-border-pink-hover); }
+.ul-list .board-left-line-orange:hover { border-left: var(--line-border-orange-hover); }
+.ul-list .board-left-line-yellow:hover { border-left: var(--line-border-yellow-hover); }
+.ul-list .board-left-line-blue:hover { border-left: var(--line-border-blue-hover); }
+.ul-list .board-left-line-green:hover { border-left: var(--line-border-green-hover); }
+

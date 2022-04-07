@@ -1,0 +1,34 @@
+﻿@model TaskBoard_CKT.Models.Project
+@{
+    ViewData["Title"] = "Project";
+}
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="row">
+            <h4 class="text-black-50 pl-3">Add Project</h4>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input asp-for="Name" class="form-control" placeholder="Name">
+                    <label asp-for="Name">Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <input type="submit" class="btn btn-primary" style="width: 150px" value="Create" />
+                        <a asp-action="Index" class="btn btn-secondary" style="width: 150px">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

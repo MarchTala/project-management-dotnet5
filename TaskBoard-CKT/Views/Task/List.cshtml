@@ -1,0 +1,223 @@
+﻿@{
+    ViewData["Title"] = "Task";
+    var info = (TaskBoard_CKT.Classes.ProjectDetails)ViewData["ProjectDetails"];
+}
+
+<div class="row mb-2 pb-1 border-bottom align-items-center">
+    <div class="col-5 col-xl-4">
+        <div class="media">
+            <div class="avatar sm">
+                <a asp-controller="Project" asp-action="Index"><i class="zmdi zmdi-arrow-left zmdi-hc-lg"></i></a>
+            </div>
+            <div class="media-body overflow-hidden">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                    <h5 class="text-truncate mb-0 me-auto">@info.ProjectName</h5>
+                </div>
+                <small class="text-truncate text-muted">Description here...</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-7 col-xl-8 text-end">
+
+        <ul class="nav justify-content-end d-inline-flex">
+            <li class="nav-item list-inline-item d-none d-md-block me-2">
+                <a href="#" class="nav-link text-muted px-3" data-bs-toggle="collapse" data-bs-target="#task-search-div"
+                    aria-expanded="true" title="Search">
+                    <i class="zmdi zmdi-search zmdi-hc-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item list-inline-item d-none d-md-block me-2">
+                <a href="@Url.Action("Create", "Task", new { projectId=info.ProjectGUID })" class="nav-link text-muted">Create Task</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 bd-callout bd-callout-danger">
+        <div class="fs-12 mb-1"><strong>PRIORITY</strong></div>
+        <ul class="list-group ul-list">
+            <li class="board-left-line-red list-group-item d-flex justify-content-between align-items-center">
+                Critical
+                <span>14</span>
+            </li>
+            <li class="board-left-line-pink list-group-item d-flex justify-content-between align-items-center">
+                Urgent
+                <span>2</span>
+            </li>
+            <li class="board-left-line-orange list-group-item d-flex justify-content-between align-items-center">
+                High
+                <span>10</span>
+            </li>
+            <li class="board-left-line-blue list-group-item d-flex justify-content-between align-items-center">
+                Medium
+                <span>23</span>
+            </li>
+            <li class="board-left-line-green list-group-item d-flex justify-content-between align-items-center">
+                Low
+                <span>60</span>
+            </li>
+        </ul>
+
+        <div class="fs-12 mt-3 mb-1"><strong>TYPE</strong></div>
+        <ul class="list-group ul-list">
+            <li class="board-left-line-red list-group-item d-flex justify-content-between align-items-center">
+                Bug
+                <span>50</span>
+            </li>
+            <li class="board-left-line-blue list-group-item d-flex justify-content-between align-items-center">
+                New Features
+                <span>12</span>
+            </li>
+            <li class="board-left-line-green list-group-item d-flex justify-content-between align-items-center">
+                Improvements
+                <span></span>
+            </li>
+        </ul>
+
+        <div class="fs-12 mt-3 mb-1"><strong>STATUS</strong></div>
+        <ul class="list-group ul-list">
+            <li class="board-left-line-yellow list-group-item d-flex justify-content-between align-items-center">
+                Open
+                <span>50</span>
+            </li>
+            <li class="board-left-line-blue list-group-item d-flex justify-content-between align-items-center">
+                In Progress
+                <span>12</span>
+            </li>
+            <li class="board-left-line-orange list-group-item d-flex justify-content-between align-items-center">
+                For Testing
+                <span></span>
+            </li>
+            <li class="board-left-line-orange list-group-item d-flex justify-content-between align-items-center">
+                For Upload
+                <span></span>
+            </li>
+            <li class="board-left-line-green list-group-item d-flex justify-content-between align-items-center">
+                Completed
+                <span></span>
+            </li>
+            <li class="board-left-line-red list-group-item d-flex justify-content-between align-items-center">
+                Hold
+                <span></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-9">
+
+        <div class="collapse mb-1" id="task-search-div">
+            <div class="input-group">
+                <input type="text" class="form-control form-control-sm" placeholder="Search...">
+                <div class="input-group-append ms-1">
+                    <button type="button" class="btn btn-sm btn-secondary">Search</button>
+                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <ul class="nav nav-tabs nav-overflow page-header-tabs mb-1">
+                <li class="nav-item"><a href="#overview" class="nav-link" data-bs-toggle="tab" role="tab">Overview</a></li>
+                <li class="nav-item"><a href="#list" class="nav-link" data-bs-toggle="tab" role="tab">List</a></li>
+                <li class="nav-item"><a href="#board" class="nav-link" data-bs-toggle="tab" role="tab">Board</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="overview" class="mt-2 tab-pane fade">
+                    <h4>How we'll collaborate</h4>
+                    <p>
+                        Welcome your team and set the tone for how you’ll work together in TaskBoard.
+                        Add meeting details, communication channels, and other important information.
+                    </p>
+                </div>
+
+                <div id="list" class="table-responsive tab-pane fade">
+                    <table class="table tbl-task-list">
+                        <thead>
+                            <tr>
+                                <th>Task #</th>
+                                <th>Project</th>
+                                <th>Date Created</th>
+                                <th>Assign To</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (info.ProjectTaskList.Count > 0)
+                            {
+                                @foreach (var task in info.ProjectTaskList)
+                                {
+                                    <tr>
+                                        <td class="align-middle"><strong>10-108</strong></td>
+                                        <td class="align-middle td-action">
+                                            <a class="a-title" href="@Url.Action("Detail", "Task", new { taskId=task.Id })">
+                                                <span class="spn-title">@task.Title</span>
+                                            </a>
+
+                                            <span class="spn-action">
+                                                <a class="a-action" asp-controller="Task" asp-action="Delete"
+                                            asp-route-Id="@task.Id">Delete</a>
+                                                <a class="a-action" asp-controller="Task" asp-action="Update"
+                                            asp-route-Id="@task.Id">Edit</a>
+                                            </span>
+
+                                            <p class="m-0 p-created-by">
+                                                <span class="text-muted">Created by <strong> Jesamine P.</strong></span>
+
+                                                <span class="badge bg-danger">Urgent</span>
+                                                <span class="badge bg-dark">Bug</span>
+                                            </p>
+                                        </td>
+                                        <td class="align-middle">@task.CreatedAt.ToString("MMM dd, yyyy") </td>
+                                        <td class="align-middle">
+                                            <ul class="list-unstyled order-list mb-0">
+                                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                                src="../images/xs/avatar1.jpeg" alt="user" data-toggle="tooltip" title=""
+                                                data-original-title="March T."></li>
+                                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                                src="../images/xs/avatar2.jpeg" alt="user" data-toggle="tooltip" title=""
+                                                data-original-title="Jhason B."></li>
+                                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                                src="../images/xs/avatar3.jpeg" alt="user" data-toggle="tooltip" title=""
+                                                data-original-title="King A."></li>
+                                                <li class="avatar avatar-sm"><span class="badge bg-light spn-more-assign-user">+4</span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="align-middle text-center text-light bg-success">
+                                            Open
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="align-middle text-center" colspan="7">No Task Available</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="board" class="tab-pane fade">
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <i class="zmdi zmdi-alert-circle" style="font-size: 15px; margin-right: 5px;"></i> Under Development
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

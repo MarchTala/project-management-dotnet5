@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TaskBoard_CKT.Models.Project>
+@{
+    ViewData["Title"] = "Project";
+}
+
+<div class="row mb-2 border-bottom">
+    <h5>Welcome, @User.Identity.Name</h5>
+</div>
+
+<div class="row dv-starred-board-container">
+    <h6 class="mb-3"><strong><i class="zmdi zmdi-star-circle"></i> Starred boards</strong></h6>
+    <small>No starred board available</small>
+</div>
+
+<div class="row mb-2 dv-your-board-container">
+    <h6 class="mb-0"><strong><i class="zmdi zmdi-view-dashboard"></i> Your boards</strong></h6>
+    <div class="row row-cols-1 row-cols-md-4 g-2 mt-0">
+        @if (Model.Count() > 0)
+        {
+            @foreach (var project in Model)
+            {
+                <div class="col">
+                    <div class="card dv-project-container">
+                        <div class="card-body">
+                            <a href="@Url.Action("List", "Task", new { projectId=@project.Id })">
+                                <h5 class="card-title p-project-title">@project.Name</h5>
+                                <p class="card-text p-project-description">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                            </a>
+                            <div class="spn-project-action">
+                                <a class="a-project-action" asp-controller="Project" asp-action="Delete" asp-route-Id="@project.Id">Delete</a>
+                                <a class="a-project-action" asp-controller="Project" asp-action="Update" asp-route-Id="@project.Id">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="col">
+            <div class="card dv-project-container">
+                <div class="card-body dv-create-new-board">
+                    <a asp-controller="Project" asp-action="Create"><i class="zmdi zmdi-plus-circle"></i>Create new board</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

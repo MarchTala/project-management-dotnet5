@@ -1,0 +1,113 @@
+﻿@model TaskBoard_CKT.Models.Task
+@{
+    ViewData["Title"] = "Task";
+}
+
+<form method="post" asp-action="Update">
+    <input asp-for="Id" hidden />
+    <input asp-for="ProjectId" hidden />
+    <div class="border p-3">
+        <div class="row">
+            <h4 class="text-black-50 pl-3">Update Task</h4>
+        </div>
+        <div class="row g-3">
+
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <input asp-for="Title" class="form-control" placeholder="Title">
+                    <label asp-for="Title">Title</label>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <textarea asp-for="Description" class="form-control" placeholder="Description" style="height: 100px;"></textarea>
+                    <label asp-for="Description">Description</label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <select asp-for="Priority" class="form-select">
+                        <option value="0">Critical</option>
+                        <option value="1">Urgent</option>
+                        <option value="2">High</option>
+                        <option value="3">Mid</option>
+                        <option value="4">Low</option>
+                    </select>
+                    <label asp-for="Priority"></label>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <select asp-for="Type" class="form-select">
+                        <option value="0">New Features</option>
+                        <option value="1">Bug</option>
+                        <option value="2">Improvements</option>
+                    </select>
+                    <label asp-for="Type"></label>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <select asp-for="Status" class="form-select">
+                        <option value="0">Open</option>
+                        <option value="1">In Progress</option>
+                        <option value="2">For Testing</option>
+                        <option value="3">For Upload</option>
+                        <option value="4">Completed</option>
+                        <option value="5">Hold</option>
+                    </select>
+                    <label asp-for="Status"></label>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <select asp-for="Assignee" class="form-select">
+                        <option value="March">March</option>
+                        <option value="Jhason">Jhason</option>
+                        <option value="King">King</option>
+                    </select>
+                    <label asp-for="Assignee"></label>
+                    <span asp-validation-for="Assignee" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input asp-for="Tags" class="form-control" placeholder="S-05, S-22, A-05" />
+                    <label asp-for="Tags"></label>
+                    <span asp-validation-for="Tags" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input type="datetime-local" asp-for="DateEstimated" class="form-control" />
+                    <label asp-for="DateEstimated"></label>
+                    <span asp-validation-for="DateEstimated" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-primary" style="width: 150px" value="Update" />
+                <a href="@Url.Action("List", "Task", new { projectId = Model.ProjectId })" class="btn btn-secondary" style="width: 150px">Back</a>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
